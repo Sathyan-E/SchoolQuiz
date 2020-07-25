@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SchoolQuiz</string>
+    <string name="welcome">Welcome for your Quiz</string>
 </resources>
