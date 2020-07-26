@@ -1,4 +1,6 @@
 package com.example.schoolquiz.repository
 
-class QuizActivityRepository {
+import android.app.Application
+
+class QuizActivityRepository(application: Application) {
 }
