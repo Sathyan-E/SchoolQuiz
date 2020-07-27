@@ -17,6 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class CategoryActivityRepository(val application: Application) {
     val showProgress=MutableLiveData<Boolean>()
+    val categoryList=MutableLiveData<List<Category>>()
+
 
     fun changePrgressState(){
         showProgress.value = !(showProgress.value!=null && showProgress.value!!)
@@ -41,6 +43,7 @@ class CategoryActivityRepository(val application: Application) {
 
                 showProgress.value=false
                 Log.d("Category List","Response : ${Gson().toJson(response.body())}")
+                categoryList.value=response.body()!!.categoryList
             }
 
         })

@@ -7,12 +7,14 @@ import android.view.View.VISIBLE
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.schoolquiz.R
+import com.example.schoolquiz.adapter.CategoryAdapter
 import com.example.schoolquiz.viewModel.CategoryActivityViewModel
 import kotlinx.android.synthetic.main.activity_category.*
 
 class CategoryActivity : AppCompatActivity() {
 
     private lateinit var viewModel:CategoryActivityViewModel
+    private lateinit var categoryAdapter:CategoryAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,5 +34,11 @@ class CategoryActivity : AppCompatActivity() {
                 category_progressbar.visibility=GONE
             }
         })
+        viewModel.categoryList.observe(this, Observer {
+          categoryAdapter.setCategoryList(it)
+        })
+        categoryAdapter= CategoryAdapter(this)
+        category_recyclerview.adapter=categoryAdapter
+
     }
 }
