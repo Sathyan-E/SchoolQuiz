@@ -15,4 +15,7 @@ class CategoryActivityViewModel(application: Application) : AndroidViewModel(app
     fun changeProgressState(){
         repository.changePrgressState()
     }
+    fun getCategoryList(){
+        repository.getCategoryList()
+    }
 }

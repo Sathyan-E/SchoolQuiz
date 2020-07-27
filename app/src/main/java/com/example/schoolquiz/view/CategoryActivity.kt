@@ -22,6 +22,7 @@ class CategoryActivity : AppCompatActivity() {
 
         check_button.setOnClickListener {
             viewModel.changeProgressState()
+            viewModel.getCategoryList()
         }
 
         viewModel.showProgress.observe(this, Observer {
