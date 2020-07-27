@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schoolquiz.R
 import com.example.schoolquiz.network.model.Category
-import com.example.schoolquiz.view.QuizActivity
+import com.example.schoolquiz.view.QuizParametersActivity
 import kotlinx.android.synthetic.main.category_item_layout.view.*
 
 class CategoryAdapter(private val context: Context):RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
@@ -36,7 +36,7 @@ class CategoryAdapter(private val context: Context):RecyclerView.Adapter<Categor
     override fun onBindViewHolder(holder: CategoryViewHolder, position: Int) {
         holder.name.text=list[position].name
         holder.rootView.setOnClickListener{
-            val intent=Intent(context,QuizActivity::class.java)
+            val intent=Intent(context,QuizParametersActivity::class.java)
             context.startActivity(intent)
         }
 

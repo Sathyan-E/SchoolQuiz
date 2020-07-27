@@ -21,11 +21,8 @@ class CategoryActivity : AppCompatActivity() {
         setContentView(R.layout.activity_category)
 
         viewModel=ViewModelProvider(this).get(CategoryActivityViewModel::class.java)
-
-        check_button.setOnClickListener {
-            viewModel.changeProgressState()
-            viewModel.getCategoryList()
-        }
+        viewModel.changeProgressState()
+        viewModel.getCategoryList()
 
         viewModel.showProgress.observe(this, Observer {
             if (it){
