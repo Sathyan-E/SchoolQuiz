@@ -31,7 +31,6 @@ class QuizParametersActivity : AppCompatActivity() {
     fun difficultySelection(view:View){
         if (view is RadioButton){
             val checked=view.isChecked
-
             when(view.id){
                 R.id.easy_radio_button ->
                     if (checked){
@@ -47,6 +46,59 @@ class QuizParametersActivity : AppCompatActivity() {
                     }
 
 
+
+            }
+        }
+    }
+
+    fun questionNumberSelection(view:View){
+        if (view is RadioButton){
+            val checked=view.isChecked
+
+            when(view.id){
+                R.id.num_10_rd_button ->
+                    if (checked){
+                        amount="10"
+                    }
+                R.id.num_15_rd_button ->
+                    if (checked){
+                        amount="15"
+                    }
+                R.id.num_20_rd_button ->
+                    if (checked){
+                        amount="20"
+                    }
+                R.id.num_25_rd_button ->
+                    if (checked){
+                        amount="25"
+                    }
+                R.id.num_30_rd_button ->
+                    if (checked){
+                        amount="30"
+                    }
+                R.id.num_40_rd_button ->
+                    if (checked){
+                        amount="40"
+                    }
+                R.id.num_50_rd_button ->
+                    if (checked){
+                        amount="50"
+                    }
+            }
+        }
+    }
+    fun typeSelection(view:View){
+        if (view is RadioButton){
+            val checked=view.isChecked
+            when(view.id){
+                R.id.choice_radio_button ->
+                    if (checked){
+                        type="multiple"
+                    }
+                R.id.true_or_false_radio_button ->
+                    if (checked){
+                        type="boolean"
+                    }
 
             }
         }

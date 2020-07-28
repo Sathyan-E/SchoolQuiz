@@ -44,37 +44,44 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/ten"
-            android:checked="true"/>
+            android:checked="true"
+            android:onClick="questionNumberSelection"/>
         <RadioButton
             android:id="@+id/num_15_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fifteen"/>
+            android:text="@string/fifteen"
+            android:onClick="questionNumberSelection"/>
         <RadioButton
             android:id="@+id/num_20_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/twenty"/>
+            android:text="@string/twenty"
+            android:onClick="questionNumberSelection"/>
         <RadioButton
             android:id="@+id/num_25_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/twenty_five"/>
+            android:text="@string/twenty_five"
+            android:onClick="questionNumberSelection"/>
         <RadioButton
             android:id="@+id/num_30_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/thirty"/>
+            android:text="@string/thirty"
+            android:onClick="questionNumberSelection"/>
         <RadioButton
             android:id="@+id/num_40_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/forty"/>
+            android:text="@string/forty"
+            android:onClick="questionNumberSelection"/>
         <RadioButton
             android:id="@+id/num_50_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/fifty"/>
+            android:text="@string/fifty"
+            android:onClick="questionNumberSelection"/>
     </RadioGroup>
 
     <RadioGroup
@@ -142,13 +149,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/multiple"
-            android:checked="true"/>
+            android:checked="true"
+            android:onClick="typeSelection"/>
 
         <RadioButton
             android:id="@+id/true_or_false_radio_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/true_or_false" />
+            android:text="@string/true_or_false"
+            android:onClick="typeSelection"/>
     </RadioGroup>
 
     <Button
