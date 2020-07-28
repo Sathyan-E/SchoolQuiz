@@ -1,5 +1,6 @@
 package com.example.schoolquiz.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.schoolquiz.R
@@ -13,6 +14,10 @@ class QuizParametersActivity : AppCompatActivity() {
         start_quiz_button.setOnClickListener{
             if (student_name.text.toString() == ""){
                 student_name.error="Enter your name"
+            }
+            else{
+                val intent=Intent(this,QuizActivity::class.java)
+                startActivity(intent)
             }
         }
     }

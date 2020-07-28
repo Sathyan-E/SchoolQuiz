@@ -41,7 +41,8 @@
             android:id="@+id/num_10_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="10"/>
+            android:text="10"
+            android:checked="true"/>
         <RadioButton
             android:id="@+id/num_15_rd_button"
             android:layout_width="match_parent"
@@ -87,7 +88,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Easy" />
+            android:text="Easy"
+            android:checked="true"/>
 
         <RadioButton
             android:id="@+id/medium_radio_button"
@@ -134,7 +136,8 @@
             android:id="@+id/choice_radio_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Multiple Choice Questions" />
+            android:text="Multiple Choice Questions"
+            android:checked="true"/>
 
         <RadioButton
             android:id="@+id/true_or_false_radio_button"
