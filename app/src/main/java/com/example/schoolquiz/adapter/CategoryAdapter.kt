@@ -38,6 +38,8 @@ class CategoryAdapter(private val context: Context):RecyclerView.Adapter<Categor
         holder.name.text=list[position].name
         holder.rootView.setOnClickListener{
             val intent=Intent(context,QuizParametersActivity::class.java)
+            intent.putExtra("category_id",list[position].id.toString())
+            intent.putExtra("category_name",list[position].name.toString())
             context.startActivity(intent)
         }
 

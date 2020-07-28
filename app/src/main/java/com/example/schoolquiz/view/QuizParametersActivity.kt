@@ -12,9 +12,16 @@ class QuizParametersActivity : AppCompatActivity() {
     private var difficulty:String="easy"
     private var amount:String="10"
     private var type:String="multiple"
+    private lateinit var categoryId:String
+    private lateinit var categoryName:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz_parameter)
+
+        categoryId=intent.getStringExtra("category_id").toString()
+        categoryName=intent.getStringExtra("category_name").toString()
+
+        selected_category.text=categoryName+" "+categoryId
 
         start_quiz_button.setOnClickListener{
             if (student_name.text.toString() == ""){
