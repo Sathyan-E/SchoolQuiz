@@ -13,6 +13,6 @@ class QuestionDetail {
     var question:String?=null
     @SerializedName("correct_answer")
     var  correctAnswer:String?=null
-    @SerializedName("incorrect_answer")
+    @SerializedName("incorrect_answers")
     var incorrectAnswers:List<String>?=null
 }

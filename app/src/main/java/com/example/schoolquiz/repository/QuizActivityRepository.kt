@@ -3,6 +3,7 @@ package com.example.schoolquiz.repository
 import android.app.Application
 import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.MutableLiveData
 import com.example.schoolquiz.network.BASE_URL
 import com.example.schoolquiz.network.NetworkCalls
 import com.example.schoolquiz.network.model.QuestionDetail
@@ -15,9 +16,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class QuizActivityRepository(val application: Application) {
-        val questionList:ArrayList<QuestionDetail> = ArrayList()
-    fun getQuiz(id:String,amount:String,difficulty:String,type:String):ArrayList<QuestionDetail>{
-        questionList.clear()
+    val questionList=MutableLiveData<List<QuestionDetail>>()
+
+    fun getQuiz(id:String,amount:String,difficulty:String,type:String){
         val retrofit= Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
         val service=retrofit.create(NetworkCalls::class.java)
         service.getQuiz(amount,id,difficulty,type).enqueue(object: Callback<Quiz>{
@@ -26,12 +27,11 @@ class QuizActivityRepository(val application: Application) {
             }
 
             override fun onResponse(call: Call<Quiz>, response: Response<Quiz>) {
-                questionList.addAll(response.body()?.results!!)
+                questionList.value=response.body()!!.results
                 Log.d("Category List","Response : ${Gson().toJson(response.body())}")
 
             }
 
         })
-        return questionList
     }
 }
