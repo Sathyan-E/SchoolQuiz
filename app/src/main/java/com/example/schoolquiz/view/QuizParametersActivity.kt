@@ -29,6 +29,10 @@ class QuizParametersActivity : AppCompatActivity() {
             }
             else{
                 val intent=Intent(this,QuizActivity::class.java)
+                intent.putExtra("category_id",categoryId)
+                intent.putExtra("amount",amount)
+                intent.putExtra("type",type)
+                intent.putExtra("difficulty",difficulty)
                 startActivity(intent)
             }
         }
