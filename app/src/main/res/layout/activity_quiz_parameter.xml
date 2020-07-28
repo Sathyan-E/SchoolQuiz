@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Enter your Name"
+        android:text="@string/enter_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -19,7 +19,9 @@
         android:id="@+id/student_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Full Name"
+        android:hint="@string/name_hint"
+        android:inputType="textPersonName"
+        android:autofillHints="@string/name_hint"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
@@ -28,7 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:text="Select Number of Questions:"
+        android:text="@string/select_num"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/student_name" />
 
@@ -41,38 +43,38 @@
             android:id="@+id/num_10_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="10"
+            android:text="@string/ten"
             android:checked="true"/>
         <RadioButton
             android:id="@+id/num_15_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="15"/>
+            android:text="@string/fifteen"/>
         <RadioButton
             android:id="@+id/num_20_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="20"/>
+            android:text="@string/twenty"/>
         <RadioButton
             android:id="@+id/num_25_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="25"/>
+            android:text="@string/twenty_five"/>
         <RadioButton
             android:id="@+id/num_30_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="30"/>
+            android:text="@string/thirty"/>
         <RadioButton
             android:id="@+id/num_40_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="40"/>
+            android:text="@string/forty"/>
         <RadioButton
             android:id="@+id/num_50_rd_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="50"/>
+            android:text="@string/fifty"/>
     </RadioGroup>
 
     <RadioGroup
@@ -88,22 +90,25 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Easy"
-            android:checked="true"/>
+            android:text="@string/easy"
+            android:checked="true"
+            android:onClick="difficultySelection"/>
 
         <RadioButton
             android:id="@+id/medium_radio_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Medium" />
+            android:text="@string/medium"
+            android:onClick="difficultySelection"/>
 
         <RadioButton
             android:id="@+id/hard_radio_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Hard" />
+            android:text="@string/hard"
+            android:onClick="difficultySelection"/>
     </RadioGroup>
 
     <TextView
@@ -111,7 +116,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
-        android:text="Select Difficulty"
+        android:text="@string/selet_diff"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionnums_radiogroup" />
 
@@ -120,7 +125,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="21dp"
-        android:text="Select Question Type:"
+        android:text="@string/select_type"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficulty_radioGroup" />
 
@@ -136,14 +141,14 @@
             android:id="@+id/choice_radio_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Multiple Choice Questions"
+            android:text="@string/multiple"
             android:checked="true"/>
 
         <RadioButton
             android:id="@+id/true_or_false_radio_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="True/False Questions" />
+            android:text="@string/true_or_false" />
     </RadioGroup>
 
     <Button
@@ -153,7 +158,7 @@
         android:layout_marginStart="128dp"
         android:layout_marginLeft="128dp"
         android:layout_marginTop="60dp"
-        android:text="Start Quiz"
+        android:text="@string/start_quiz"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qn_type_radioGroup" />
 

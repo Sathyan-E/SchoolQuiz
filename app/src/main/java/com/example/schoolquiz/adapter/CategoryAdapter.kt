@@ -5,6 +5,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.schoolquiz.R
 import com.example.schoolquiz.network.model.Category
@@ -19,8 +20,8 @@ class CategoryAdapter(private val context: Context):RecyclerView.Adapter<Categor
         notifyDataSetChanged()
     }
     class CategoryViewHolder(v:View):RecyclerView.ViewHolder(v){
-        val name=v.category_name
-        val rootView=v.rootView
+        val name: TextView =v.category_name
+        val rootView: View =v.rootView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
