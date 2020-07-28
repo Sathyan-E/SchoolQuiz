@@ -23,6 +23,7 @@ class QuizActivity : AppCompatActivity() {
 
         val name=intent.getStringExtra("category_id") +"Questions: "+"Question type: "+
                 intent.getStringExtra("type")+"Difficulty: "+intent.getStringExtra("difficulty")
-        mytext.text=name
+
+       // mytext.text=name
     }
 }

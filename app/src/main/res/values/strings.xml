@@ -21,5 +21,7 @@
     <string name="start_quiz">Start Quiz</string>
     <string name="splash_image">Splash Image</string>
     <string name="your_cat">Your Category</string>
+    <string name="submit_button">Submit</string>
+    <string name="next_button">Next</string>
 
 </resources>
