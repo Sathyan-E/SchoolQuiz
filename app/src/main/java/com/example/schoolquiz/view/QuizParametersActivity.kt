@@ -3,9 +3,13 @@ package com.example.schoolquiz.view
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.RadioButton
+import android.widget.Toast
 import com.example.schoolquiz.R
+import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_quiz_parameter.*
 
 class QuizParametersActivity : AppCompatActivity() {
@@ -113,5 +117,19 @@ class QuizParametersActivity : AppCompatActivity() {
 
             }
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId==R.id.sign_out){
+
+            AuthUI.getInstance().signOut(this)
+            Toast.makeText(this,"Sign out button clciked", Toast.LENGTH_SHORT).show()
+        }
+
+        return true
     }
 }

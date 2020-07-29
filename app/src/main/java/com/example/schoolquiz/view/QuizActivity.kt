@@ -2,6 +2,8 @@ package com.example.schoolquiz.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -11,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.schoolquiz.R
 import com.example.schoolquiz.network.model.QuestionDetail
 import com.example.schoolquiz.viewModel.QuizActivityViewModel
+import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_quiz.*
 
 class QuizActivity : AppCompatActivity() {
@@ -104,5 +107,19 @@ class QuizActivity : AppCompatActivity() {
         if (view is RadioButton){
 
         }
+    }
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.options_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId==R.id.sign_out){
+
+            AuthUI.getInstance().signOut(this)
+            Toast.makeText(this,"Sign out button clciked",Toast.LENGTH_SHORT).show()
+        }
+
+        return true
     }
 }
