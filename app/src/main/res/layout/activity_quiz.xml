@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"/>
             <RadioGroup
+                android:id="@+id/answer_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <RadioButton
@@ -42,6 +43,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
             </RadioGroup>
+            <TextView
+                android:id="@+id/result_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
         </LinearLayout>
 
