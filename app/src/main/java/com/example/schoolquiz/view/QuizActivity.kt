@@ -116,7 +116,8 @@ class QuizActivity : AppCompatActivity() {
         }
         else{
             Toast.makeText(this,"Quiz Ended.Your  score is $score",Toast.LENGTH_SHORT).show()
-            result_textview.text="Quiz Ended.Your  score is $score"
+            //result_textview.text="Quiz Ended.Your  score is $score"
+            publishResult()
         }
 
     }
@@ -139,5 +140,17 @@ class QuizActivity : AppCompatActivity() {
         }
 
         return true
+    }
+    fun publishResult(){
+        category_result.text=intent.getStringExtra("category_name")
+        name_result.text=intent.getStringExtra("student_name")
+        score_result.text=score.toString()
+        if (score>=5){
+            final_result.text="PASS"
+        }else{
+            final_result.text="FAIL"
+        }
+        result_cardview.visibility= VISIBLE
+
     }
 }

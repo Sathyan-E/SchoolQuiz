@@ -33,6 +33,8 @@ class QuizParametersActivity : AppCompatActivity() {
             }
             else{
                 val intent=Intent(this,QuizActivity::class.java)
+                intent.putExtra("student_name",student_name.text)
+                intent.putExtra("category_name",categoryName)
                 intent.putExtra("category_id",categoryId)
                 intent.putExtra("amount",amount)
                 intent.putExtra("type",type)
