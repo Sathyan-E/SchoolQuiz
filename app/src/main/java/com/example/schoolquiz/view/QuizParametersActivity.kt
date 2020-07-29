@@ -10,7 +10,6 @@ import android.widget.RadioButton
 import android.widget.Toast
 import com.example.schoolquiz.R
 import com.firebase.ui.auth.AuthUI
-import kotlinx.android.synthetic.main.activity_quiz_parameter.*
 import kotlinx.android.synthetic.main.layout_parameter_activity.*
 
 class QuizParametersActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class QuizParametersActivity : AppCompatActivity() {
     private lateinit var categoryName:String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz_parameter)
+        setContentView(R.layout.layout_parameter_activity)
 
         categoryId=intent.getStringExtra("category_id").toString()
         categoryName=intent.getStringExtra("category_name").toString()
