@@ -23,6 +23,9 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var studentAnswer:String
     private var displayRightAnswerMessage="Congratulations!! Perfect Answer"
     private lateinit var displayWrongAnswerMessage:String
+    //private var startTime:Long=0L
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_quiz)
@@ -45,22 +48,6 @@ class QuizActivity : AppCompatActivity() {
             updateUi(questionNumber)
         })
 
-       /**
-        answer_radio_group.setOnCheckedChangeListener(RadioGroup.OnCheckedChangeListener{answer_radio_group,i ->
-            if (i==R.id.option_A){
-                Toast.makeText(this,"Option A",Toast.LENGTH_SHORT).show()
-            }
-            if (i==R.id.option_B){
-                Toast.makeText(this,"Option B",Toast.LENGTH_SHORT).show()
-            }
-            if (i==R.id.option_C){
-                Toast.makeText(this,"Option C",Toast.LENGTH_SHORT).show()
-            }
-            if (i==R.id.option_D){
-                Toast.makeText(this,"Option D",Toast.LENGTH_SHORT).show()
-            }
-        })
-        **/
 
     }
 
