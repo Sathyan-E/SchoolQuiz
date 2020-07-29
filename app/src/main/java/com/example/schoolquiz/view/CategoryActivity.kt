@@ -94,11 +94,17 @@ class CategoryActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        return super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.options_menu,menu)
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return super.onOptionsItemSelected(item)
+        if (item.itemId==R.id.sign_out){
 
+            AuthUI.getInstance().signOut(this)
+            Toast.makeText(this,"Sign out button clciked",Toast.LENGTH_SHORT).show()
+        }
+
+        return true
     }
 }
