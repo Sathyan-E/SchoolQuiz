@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.View.VISIBLE
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -43,12 +44,18 @@ class QuizActivity : AppCompatActivity() {
         quizviewModel.getQuiz(categoryId!!,amount!!,difficulty!!,type!!)
 
         quizviewModel.questionList.observe(this, Observer {
-            questionList.clear()
-            questionNumber=0
-            score=0
-            questionList.addAll(it)
-            totalQuestions=questionList.size
-            updateUi(questionNumber)
+            if (it.size>0){
+                questionList.clear()
+                questionNumber=0
+                score=0
+                questionList.addAll(it)
+                totalQuestions=questionList.size
+                updateUi(questionNumber)
+            }
+            else{
+                Toast.makeText(this,"Quiz not Available",Toast.LENGTH_SHORT).show()
+            }
+
         })
 
 
@@ -70,6 +77,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
     fun submitAnswer(view:View){
+        submit_button.isEnabled=false
         questionNumber++
         next_button.isEnabled=true
         val id= findViewById<RadioButton>(answer_radio_group.checkedRadioButtonId)
@@ -79,12 +87,17 @@ class QuizActivity : AppCompatActivity() {
             Toast.makeText(this, "Correct Answer!",Toast.LENGTH_SHORT).show()
             score++
             result_textview.text=displayRightAnswerMessage
+            result_textview.visibility=VISIBLE
             result_textview.setTextColor(resources.getColor(R.color.correctAnswer))
         }else{
             Toast.makeText(this, "Wrong Answer!$correctAnswer",Toast.LENGTH_SHORT).show()
             displayWrongAnswerMessage="Wrong Answer! The correct answer is $correctAnswer"
             result_textview.text=displayWrongAnswerMessage
+            result_textview.visibility=VISIBLE
             result_textview.setTextColor(resources.getColor(R.color.wrongAnswer))
+        }
+        if (questionNumber>=totalQuestions){
+            next_button.text="Finish"
         }
 
 
@@ -95,6 +108,7 @@ class QuizActivity : AppCompatActivity() {
             updateUi(questionNumber)
             view.isEnabled=false
             answer_radio_group.clearCheck()
+            result_textview.visibility=View.INVISIBLE
         }
         else{
             Toast.makeText(this,"Quiz Ended.Your  score is $score",Toast.LENGTH_SHORT).show()
@@ -103,9 +117,9 @@ class QuizActivity : AppCompatActivity() {
 
     }
 
-    fun checkAnswer(view: View){
+    fun buttonClicked(view: View){
         if (view is RadioButton){
-
+            submit_button.isEnabled=true
         }
     }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

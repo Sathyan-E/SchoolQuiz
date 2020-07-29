@@ -10,74 +10,103 @@
         android:id="@+id/qn_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
+        app:cardCornerRadius="10dp"
+        android:background="@color/silver"
+        android:padding="5dp"
+        android:layout_margin="10dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/lavender_blush">
+
             <TextView
                 android:id="@+id/question_textview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"/>
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:textColor="@color/navy"/>
+
             <RadioGroup
                 android:id="@+id/answer_radio_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
                 <RadioButton
                     android:id="@+id/option_A"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:onClick="buttonClicked"/>
+
                 <RadioButton
                     android:id="@+id/option_B"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:onClick="buttonClicked"/>
+
                 <RadioButton
                     android:id="@+id/option_C"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:onClick="buttonClicked"/>
+
                 <RadioButton
                     android:id="@+id/option_D"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/black"
+                    android:onClick="buttonClicked"/>
             </RadioGroup>
+
             <TextView
                 android:id="@+id/result_textview"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"/>
+            <Button
+                android:id="@+id/submit_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/submit_button"
+                android:layout_gravity="center"
+                android:onClick="submitAnswer"
+                android:enabled="false"/>
+
 
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/submit_button"
+    <ProgressBar
+        android:id="@+id/progressbar_quiz"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="144dp"
-        android:layout_marginLeft="144dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="179dp"
-        android:layout_marginRight="179dp"
-        android:text="@string/submit_button"
-        android:onClick="submitAnswer"
+        android:layout_marginEnd="182dp"
+        android:layout_marginBottom="168dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qn_card_view" />
+        tools:visibility="visible" />
+
 
     <Button
         android:id="@+id/next_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/next_button"
-        android:onClick="goNextQuestion"
+        android:layout_marginTop="59dp"
+        android:layout_marginEnd="32dp"
         android:enabled="false"
+        android:onClick="goNextQuestion"
+        android:text="@string/next_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/submit_button" />
+        app:layout_constraintTop_toBottomOf="@+id/qn_card_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
