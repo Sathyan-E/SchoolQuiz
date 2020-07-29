@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/navy">
 
     <TextView
         android:id="@+id/textview_your_category"
@@ -11,6 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/your_cat"
+        android:textColor="@color/lavender_blush"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -20,6 +23,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="@string/gk"
+        android:textStyle="bold"
+        android:textColor="@color/lavender_blush"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textview_your_category" />
 
@@ -29,6 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/enter_name"
+        android:textStyle="bold"
+        android:textColor="@color/lavender_blush"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/selected_category" />
 
@@ -39,6 +46,8 @@
         android:layout_marginTop="5dp"
         android:autofillHints="@string/name_hint"
         android:hint="@string/name_hint"
+        android:textColorHint="@color/wrongAnswer"
+        android:textColor="@color/wrongAnswer"
         android:inputType="textPersonName"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -49,6 +58,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/select_num"
+        android:textColor="@color/lavender_blush"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/student_name" />
 
@@ -66,6 +77,7 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:onClick="questionNumberSelection"
+            android:textColor="@color/yellow"
             android:text="@string/ten" />
 
         <RadioButton
@@ -73,6 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="questionNumberSelection"
+            android:textColor="@color/yellow"
             android:text="@string/fifteen" />
 
         <RadioButton
@@ -80,6 +93,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="questionNumberSelection"
+            android:textColor="@color/yellow"
             android:text="@string/twenty" />
 
         <RadioButton
@@ -87,6 +101,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="questionNumberSelection"
+            android:textColor="@color/yellow"
             android:text="@string/twenty_five" />
 
         <RadioButton
@@ -94,6 +109,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="questionNumberSelection"
+            android:textColor="@color/yellow"
             android:text="@string/thirty" />
 
         <RadioButton
@@ -101,6 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="questionNumberSelection"
+            android:textColor="@color/yellow"
             android:text="@string/forty" />
 
         <RadioButton
@@ -108,6 +125,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="questionNumberSelection"
+            android:textColor="@color/yellow"
             android:text="@string/fifty" />
     </RadioGroup>
 
@@ -117,6 +135,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/selet_diff"
+        android:textStyle="bold"
+        android:textColor="@color/lavender_blush"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionnums_radiogroup" />
 
@@ -137,6 +157,7 @@
             android:layout_weight="1"
             android:checked="true"
             android:onClick="difficultySelection"
+            android:textColor="@color/lime"
             android:text="@string/easy" />
 
         <RadioButton
@@ -145,6 +166,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="difficultySelection"
+            android:textColor="@color/lime"
             android:text="@string/medium" />
 
         <RadioButton
@@ -153,7 +175,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="difficultySelection"
-            android:text="@string/hard" />
+            android:text="@string/hard"
+            android:textColor="@color/lime"/>
     </RadioGroup>
 
     <TextView
@@ -162,6 +185,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:text="@string/select_type"
+        android:textStyle="bold"
+        android:textColor="@color/lavender_blush"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficulty_radioGroup" />
 
@@ -180,6 +205,7 @@
             android:layout_height="wrap_content"
             android:checked="true"
             android:onClick="typeSelection"
+            android:textColor="@color/deep_pink"
             android:text="@string/multiple" />
 
         <RadioButton
@@ -187,17 +213,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="typeSelection"
-            android:text="@string/true_or_false" />
+            android:text="@string/true_or_false"
+            android:textColor="@color/deep_pink"/>
     </RadioGroup>
 
     <Button
         android:id="@+id/start_quiz_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="128dp"
-        android:layout_marginLeft="128dp"
+        android:layout_marginStart="155dp"
         android:layout_marginTop="30dp"
+        android:layout_marginEnd="155dp"
         android:text="@string/start_quiz"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/qn_type_radioGroup" />
 
