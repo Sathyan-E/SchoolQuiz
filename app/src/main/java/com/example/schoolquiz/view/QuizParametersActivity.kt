@@ -11,6 +11,7 @@ import android.widget.Toast
 import com.example.schoolquiz.R
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_quiz_parameter.*
+import kotlinx.android.synthetic.main.layout_parameter_activity.*
 
 class QuizParametersActivity : AppCompatActivity() {
     private var difficulty:String="easy"
