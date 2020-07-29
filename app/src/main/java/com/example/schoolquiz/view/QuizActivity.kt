@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -40,10 +41,12 @@ class QuizActivity : AppCompatActivity() {
         val amount=intent.getStringExtra("amount")
         val type= intent.getStringExtra("type")
         val difficulty=intent.getStringExtra("difficulty")
+        progressbar_quiz.visibility= VISIBLE
 
         quizviewModel.getQuiz(categoryId!!,amount!!,difficulty!!,type!!)
 
         quizviewModel.questionList.observe(this, Observer {
+            progressbar_quiz.visibility= GONE
             if (it.size>0){
                 questionList.clear()
                 questionNumber=0
@@ -73,6 +76,7 @@ class QuizActivity : AppCompatActivity() {
         option_B.text=optionList.get(1)
         option_C.text=optionList.get(2)
         option_D.text=optionList.get(3)
+        qn_card_view.visibility= VISIBLE
 
     }
 
