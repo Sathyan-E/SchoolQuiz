@@ -71,6 +71,7 @@ class QuizActivity : AppCompatActivity() {
         optionList.addAll(questionList.get(position).incorrectAnswers!!)
         correctAnswer=questionList.get(position).correctAnswer!!
         optionList.add(questionList.get(position).correctAnswer!!)
+        optionList.sort()
         // optionList.sortBy { it.label.toString() }
         option_A.text=optionList.get(0)
         option_B.text=optionList.get(1)
