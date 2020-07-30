@@ -36,6 +36,7 @@ class QuizActivity : AppCompatActivity() {
         setContentView(R.layout.activity_quiz)
 
         quizviewModel=ViewModelProvider(this).get(QuizActivityViewModel::class.java)
+        //chronometer.format="H:MM:SS"
 
         val categoryId=intent.getStringExtra("category_id")
         val amount=intent.getStringExtra("amount")
@@ -47,16 +48,21 @@ class QuizActivity : AppCompatActivity() {
 
         quizviewModel.questionList.observe(this, Observer {
             progressbar_quiz.visibility= GONE
+            next_button.visibility= VISIBLE
             if (it.size>0){
                 questionList.clear()
                 questionNumber=0
                 score=0
                 questionList.addAll(it)
                 totalQuestions=questionList.size
+                chronometer.start()
                 updateUi(questionNumber)
+
             }
             else{
-                Toast.makeText(this,"Quiz not Available",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"This Quiz is currently not Available",Toast.LENGTH_SHORT).show()
+                error_textview.text="This Quiz is currently not Available"
+                error_textview.visibility= VISIBLE
             }
 
         })
@@ -65,18 +71,38 @@ class QuizActivity : AppCompatActivity() {
     }
 
     fun updateUi(position:Int){
+        val questionObject=questionList.get(position)
 
-        question_textview.text =questionList.get(position).question
+        question_textview.text =questionObject.question
         val optionList=ArrayList<String>()
-        optionList.addAll(questionList.get(position).incorrectAnswers!!)
-        correctAnswer=questionList.get(position).correctAnswer!!
-        optionList.add(questionList.get(position).correctAnswer!!)
+        optionList.addAll(questionObject.incorrectAnswers!!)
+        correctAnswer=questionObject.correctAnswer!!
+        optionList.add(questionObject.correctAnswer!!)
         optionList.sort()
         // optionList.sortBy { it.label.toString() }
-        option_A.text=optionList.get(0)
-        option_B.text=optionList.get(1)
-        option_C.text=optionList.get(2)
-        option_D.text=optionList.get(3)
+        if (questionObject.type=="boolean"){
+            optionsForBoolean(optionList)
+        }
+        else {
+            optionsForMultiple(optionList)
+        }
+
+    }
+    fun optionsForBoolean(list:List<String>){
+        option_A.text=list.get(0)
+        option_B.text=list.get(1)
+        option_C.visibility= GONE
+        option_D.visibility= GONE
+        qn_card_view.visibility= VISIBLE
+    }
+    fun optionsForMultiple(list:List<String>){
+        option_C.visibility= VISIBLE
+        option_D.visibility= VISIBLE
+        option_A.text=list.get(0)
+        option_B.text=list.get(1)
+        option_C.text=list.get(2)
+        option_D.text=list.get(3)
+
         qn_card_view.visibility= VISIBLE
 
     }
@@ -116,6 +142,7 @@ class QuizActivity : AppCompatActivity() {
             result_textview.visibility=View.INVISIBLE
         }
         else{
+            chronometer.stop()
             Toast.makeText(this,"Quiz Ended.Your  score is $score",Toast.LENGTH_SHORT).show()
             //result_textview.text="Quiz Ended.Your  score is $score"
             publishResult()
@@ -146,6 +173,7 @@ class QuizActivity : AppCompatActivity() {
         category_result.text=intent.getStringExtra("category_name")
         name_result.text=intent.getStringExtra("student_name")
         score_result.text=score.toString()
+        time_taken.text=chronometer.text
         if (score>=5){
             final_result.text="PASS"
         }else{
