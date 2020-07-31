@@ -25,7 +25,7 @@ class QuizParametersActivity : AppCompatActivity() {
         categoryId=intent.getStringExtra("category_id").toString()
         categoryName=intent.getStringExtra("category_name").toString()
 
-        selected_category.text=categoryName+" "+categoryId
+        selected_category.text=categoryName
 
         start_quiz_button.setOnClickListener{
             if (student_name.text.toString() == ""){
@@ -62,8 +62,6 @@ class QuizParametersActivity : AppCompatActivity() {
                     if (checked){
                         difficulty="hard"
                     }
-
-
 
             }
         }

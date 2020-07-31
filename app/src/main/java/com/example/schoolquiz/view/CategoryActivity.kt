@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.view.View.*
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -36,18 +37,8 @@ class CategoryActivity : AppCompatActivity() {
 
         viewModel=ViewModelProvider(this).get(CategoryActivityViewModel::class.java)
 //        val
-        if (checkInternet()){
-            network_details.visibility= GONE
-            viewModel.changeProgressState()
-            viewModel.getCategoryList()
-        }
-        else{
-            category_progressbar.visibility= INVISIBLE
-            Toast.makeText(this,"This app requires internet connnection!",Toast.LENGTH_SHORT).show()
-            network_details.visibility= VISIBLE
-        }
 
-
+        loadCategory()
         viewModel.showProgress.observe(this, Observer {
             if (it){
                 category_progressbar.visibility=VISIBLE
@@ -123,5 +114,22 @@ class CategoryActivity : AppCompatActivity() {
         val activeNetwork=cm.activeNetworkInfo
         val isConnected:Boolean=activeNetwork?.isConnectedOrConnecting==true
         return isConnected
+    }
+
+    fun refresh(view: View){
+        loadCategory()
+    }
+    fun loadCategory(){
+        if (checkInternet()){
+            network_details.visibility= GONE
+            viewModel.changeProgressState()
+            viewModel.getCategoryList()
+        }
+        else{
+            category_progressbar.visibility= INVISIBLE
+            Toast.makeText(this,"This app requires internet connnection!",Toast.LENGTH_SHORT).show()
+            network_details.visibility= VISIBLE
+        }
+
     }
 }

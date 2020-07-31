@@ -39,7 +39,7 @@ class QuizActivity : AppCompatActivity() {
         quizviewModel=ViewModelProvider(this).get(QuizActivityViewModel::class.java)
         //chronometer.format="H:MM:SS"
 
-        refresh()
+        loadQuiz()
 
 
         quizviewModel.questionList.observe(this, Observer {
@@ -63,7 +63,7 @@ class QuizActivity : AppCompatActivity() {
 
         })
     }
-    fun refresh(){
+    fun loadQuiz(){
         val categoryId=intent.getStringExtra("category_id")
         val amount=intent.getStringExtra("amount")
         val type= intent.getStringExtra("type")
@@ -72,10 +72,14 @@ class QuizActivity : AppCompatActivity() {
 
         if (checkInternet()){
             quizviewModel.getQuiz(categoryId!!,amount!!,difficulty!!,type!!)
+            error_textview.visibility= INVISIBLE
+            refresh_button.visibility= INVISIBLE
+            progressbar_quiz.visibility= INVISIBLE
         }
         else{
             error_textview.text="This app requires Internet connnection!"
             error_textview.visibility= VISIBLE
+            refresh_button.visibility= VISIBLE
             progressbar_quiz.visibility= INVISIBLE
         }
 
@@ -199,5 +203,19 @@ class QuizActivity : AppCompatActivity() {
         val activeNetwork=cm.activeNetworkInfo
         val isConnected:Boolean=activeNetwork?.isConnectedOrConnecting==true
         return isConnected
+    }
+
+    fun refreshButtonClicked(view: View){
+        loadQuiz()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        chronometer.stop()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        chronometer.start()
     }
 }
