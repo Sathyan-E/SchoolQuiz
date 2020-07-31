@@ -1,14 +1,15 @@
 package com.example.schoolquiz.view
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -34,8 +35,18 @@ class CategoryActivity : AppCompatActivity() {
         firebaseAuth=FirebaseAuth.getInstance()
 
         viewModel=ViewModelProvider(this).get(CategoryActivityViewModel::class.java)
-        viewModel.changeProgressState()
-        viewModel.getCategoryList()
+//        val
+        if (checkInternet()){
+            network_details.visibility= GONE
+            viewModel.changeProgressState()
+            viewModel.getCategoryList()
+        }
+        else{
+            category_progressbar.visibility= INVISIBLE
+            Toast.makeText(this,"This app requires internet connnection!",Toast.LENGTH_SHORT).show()
+            network_details.visibility= VISIBLE
+        }
+
 
         viewModel.showProgress.observe(this, Observer {
             if (it){
@@ -106,5 +117,11 @@ class CategoryActivity : AppCompatActivity() {
         }
 
         return true
+    }
+    private fun checkInternet():Boolean{
+        val cm= applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork=cm.activeNetworkInfo
+        val isConnected:Boolean=activeNetwork?.isConnectedOrConnecting==true
+        return isConnected
     }
 }

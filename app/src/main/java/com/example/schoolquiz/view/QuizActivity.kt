@@ -1,12 +1,13 @@
 package com.example.schoolquiz.view
 
+import android.content.Context
+import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
@@ -38,13 +39,8 @@ class QuizActivity : AppCompatActivity() {
         quizviewModel=ViewModelProvider(this).get(QuizActivityViewModel::class.java)
         //chronometer.format="H:MM:SS"
 
-        val categoryId=intent.getStringExtra("category_id")
-        val amount=intent.getStringExtra("amount")
-        val type= intent.getStringExtra("type")
-        val difficulty=intent.getStringExtra("difficulty")
-        progressbar_quiz.visibility= VISIBLE
+        refresh()
 
-        quizviewModel.getQuiz(categoryId!!,amount!!,difficulty!!,type!!)
 
         quizviewModel.questionList.observe(this, Observer {
             progressbar_quiz.visibility= GONE
@@ -66,6 +62,22 @@ class QuizActivity : AppCompatActivity() {
             }
 
         })
+    }
+    fun refresh(){
+        val categoryId=intent.getStringExtra("category_id")
+        val amount=intent.getStringExtra("amount")
+        val type= intent.getStringExtra("type")
+        val difficulty=intent.getStringExtra("difficulty")
+        progressbar_quiz.visibility= VISIBLE
+
+        if (checkInternet()){
+            quizviewModel.getQuiz(categoryId!!,amount!!,difficulty!!,type!!)
+        }
+        else{
+            error_textview.text="This app requires Internet connnection!"
+            error_textview.visibility= VISIBLE
+            progressbar_quiz.visibility= INVISIBLE
+        }
 
 
     }
@@ -180,6 +192,12 @@ class QuizActivity : AppCompatActivity() {
             final_result.text="FAIL"
         }
         result_cardview.visibility= VISIBLE
+    }
 
+    private fun checkInternet():Boolean{
+        val cm= applicationContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork=cm.activeNetworkInfo
+        val isConnected:Boolean=activeNetwork?.isConnectedOrConnecting==true
+        return isConnected
     }
 }
