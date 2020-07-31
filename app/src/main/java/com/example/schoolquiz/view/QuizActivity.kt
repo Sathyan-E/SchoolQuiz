@@ -1,19 +1,15 @@
 package com.example.schoolquiz.view
 
-import android.Manifest
 import android.content.Context
-import android.content.pm.PackageManager
 import android.net.ConnectivityManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.View.*
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.schoolquiz.R
@@ -46,7 +42,7 @@ class QuizActivity : AppCompatActivity() {
             progressbar_quiz.visibility= GONE
             next_button.visibility= VISIBLE
 
-            if (it.size>0){
+            if (it.isNotEmpty()){
                 questionList.clear()
                 questionNumber=0
                 score=0
@@ -57,13 +53,14 @@ class QuizActivity : AppCompatActivity() {
             }
             else{
                 Toast.makeText(this,"This Quiz is currently not Available",Toast.LENGTH_SHORT).show()
-                error_textview.text="This Quiz is currently not Available"
+                val notAvailable="This Quiz is currently not Available"
+                error_textview.text=notAvailable
                 error_textview.visibility= VISIBLE
             }
 
         })
     }
-    fun loadQuiz(){
+    private fun loadQuiz(){
         val categoryId=intent.getStringExtra("category_id")
         val amount=intent.getStringExtra("amount")
         val type= intent.getStringExtra("type")
@@ -77,7 +74,8 @@ class QuizActivity : AppCompatActivity() {
             progressbar_quiz.visibility= INVISIBLE
         }
         else{
-            error_textview.text="This app requires Internet connnection!"
+            val internetRequired="This app requires Internet connection!"
+            error_textview.text=internetRequired
             error_textview.visibility= VISIBLE
             refresh_button.visibility= VISIBLE
             progressbar_quiz.visibility= INVISIBLE
@@ -86,9 +84,9 @@ class QuizActivity : AppCompatActivity() {
 
     }
 
-    fun updateUi(position:Int){
+    private fun updateUi(position:Int){
         chronometer.start()
-        val questionObject=questionList.get(position)
+        val questionObject= questionList[position]
 
         question_textview.text =questionObject.question
         val optionList=ArrayList<String>()
@@ -96,7 +94,6 @@ class QuizActivity : AppCompatActivity() {
         correctAnswer=questionObject.correctAnswer!!
         optionList.add(questionObject.correctAnswer!!)
         optionList.sort()
-        // optionList.sortBy { it.label.toString() }
         if (questionObject.type=="boolean"){
             optionsForBoolean(optionList)
         }
@@ -105,9 +102,9 @@ class QuizActivity : AppCompatActivity() {
         }
 
     }
-    fun optionsForBoolean(list:List<String>){
-        option_A.text=list.get(0)
-        option_B.text=list.get(1)
+    private fun optionsForBoolean(list:List<String>){
+        option_A.text= list[0]
+        option_B.text= list[1]
         option_C.visibility= GONE
         option_D.visibility= GONE
         qn_card_view.visibility= VISIBLE
@@ -115,10 +112,10 @@ class QuizActivity : AppCompatActivity() {
     fun optionsForMultiple(list:List<String>){
         option_C.visibility= VISIBLE
         option_D.visibility= VISIBLE
-        option_A.text=list.get(0)
-        option_B.text=list.get(1)
-        option_C.text=list.get(2)
-        option_D.text=list.get(3)
+        option_A.text= list[0]
+        option_B.text= list[1]
+        option_C.text= list[2]
+        option_D.text= list[3]
 
         qn_card_view.visibility= VISIBLE
 
@@ -145,7 +142,8 @@ class QuizActivity : AppCompatActivity() {
             result_textview.setTextColor(resources.getColor(R.color.wrongAnswer))
         }
         if (questionNumber>=totalQuestions){
-            next_button.text="Finish"
+            val finish="Finish"
+            next_button.text=finish
         }
 
 
@@ -160,8 +158,7 @@ class QuizActivity : AppCompatActivity() {
         }
         else{
             chronometer.stop()
-            Toast.makeText(this,"Quiz Ended.Your  score is $score",Toast.LENGTH_SHORT).show()
-            //result_textview.text="Quiz Ended.Your  score is $score"
+            //Toast.makeText(this,"Quiz Ended.Your  score is $score",Toast.LENGTH_SHORT).show()
             publishResult()
         }
 
@@ -186,15 +183,17 @@ class QuizActivity : AppCompatActivity() {
 
         return true
     }
-    fun publishResult(){
+    private fun publishResult(){
         category_result.text=intent.getStringExtra("category_name")
         name_result.text=intent.getStringExtra("student_name")
         score_result.text=score.toString()
         time_taken.text=chronometer.text
         if (score>=totalQuestions/2){
-            final_result.text="PASS"
+            val pass="PASS"
+            final_result.text=pass
         }else{
-            final_result.text="FAIL"
+            val fail="FAIL"
+            final_result.text=fail
         }
         result_cardview.visibility= VISIBLE
     }

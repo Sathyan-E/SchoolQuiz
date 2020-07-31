@@ -28,8 +28,8 @@ class CategoryActivity : AppCompatActivity() {
 
     private lateinit var viewModel:CategoryActivityViewModel
     private lateinit var categoryAdapter:CategoryAdapter
-    lateinit var firebaseAuth: FirebaseAuth
-    lateinit var authStateListener:FirebaseAuth.AuthStateListener
+    private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var authStateListener:FirebaseAuth.AuthStateListener
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -144,7 +144,7 @@ class CategoryActivity : AppCompatActivity() {
     }
     private fun checkPermission():Boolean{
         if (
-            ActivityCompat.checkSelfPermission(this,android.Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED)
+            ActivityCompat.checkSelfPermission(this,Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED)
         {
             return true
         }

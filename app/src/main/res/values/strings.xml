@@ -24,6 +24,12 @@
     <string name="submit_button">Submit</string>
     <string name="next_button">Next</string>
     <string name="gk">General Knowledge</string>
+    <string name="name">Name</string>
+    <string name="category">Category</string>
+    <string name="marks_scored">Marks Scored</string>
+    <string name="result">Result</string>
+    <string name="time_taken">Time taken(mins)</string>
+    <string name="refresh">Refresh</string>
 
 
 </resources>
