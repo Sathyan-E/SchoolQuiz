@@ -1,232 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <TextView
-        android:id="@+id/textview_your_category"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/your_cat"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/selected_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:text="@string/gk"
-        android:textStyle="bold"
-        android:textColor="@color/wrongAnswer"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_your_category" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/enter_name"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selected_category" />
-
-    <EditText
-        android:id="@+id/student_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:autofillHints="@string/name_hint"
-        android:hint="@string/name_hint"
-        android:textColor="@android:color/black"
-        android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/select_num"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/student_name" />
-
-    <RadioGroup
-        android:id="@+id/questionnums_radiogroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView">
-
-        <RadioButton
-            android:id="@+id/num_10_rd_button"
+        android:layout_height="match_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:onClick="questionNumberSelection"
-            android:textColor="@color/navy"
-            android:text="@string/ten" />
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/textview_your_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/your_cat"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <RadioButton
-            android:id="@+id/num_15_rd_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="questionNumberSelection"
-            android:textColor="@color/navy"
-            android:text="@string/fifteen" />
+            <TextView
+                android:id="@+id/selected_category"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/gk"
+                android:textStyle="bold"
+                android:textColor="@color/wrongAnswer"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textview_your_category" />
 
-        <RadioButton
-            android:id="@+id/num_20_rd_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="questionNumberSelection"
-            android:textColor="@color/navy"
-            android:text="@string/twenty" />
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/enter_name"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selected_category" />
 
-        <RadioButton
-            android:id="@+id/num_25_rd_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="questionNumberSelection"
-            android:textColor="@color/navy"
-            android:text="@string/twenty_five" />
+            <EditText
+                android:id="@+id/student_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:autofillHints="@string/name_hint"
+                android:hint="@string/name_hint"
+                android:textColor="@android:color/black"
+                android:inputType="textPersonName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-        <RadioButton
-            android:id="@+id/num_30_rd_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="questionNumberSelection"
-            android:textColor="@color/navy"
-            android:text="@string/thirty" />
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/select_num"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/student_name" />
 
-        <RadioButton
-            android:id="@+id/num_40_rd_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="questionNumberSelection"
-            android:textColor="@color/navy"
-            android:text="@string/forty" />
+            <RadioGroup
+                android:id="@+id/questionnums_radiogroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView">
 
-        <RadioButton
-            android:id="@+id/num_50_rd_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="questionNumberSelection"
-            android:textColor="@color/navy"
-            android:text="@string/fifty" />
-    </RadioGroup>
+                <RadioButton
+                    android:id="@+id/num_10_rd_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="questionNumberSelection"
+                    android:textColor="@color/navy"
+                    android:text="@string/ten" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/selet_diff"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionnums_radiogroup" />
+                <RadioButton
+                    android:id="@+id/num_15_rd_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="questionNumberSelection"
+                    android:textColor="@color/navy"
+                    android:text="@string/fifteen" />
 
+                <RadioButton
+                    android:id="@+id/num_20_rd_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="questionNumberSelection"
+                    android:textColor="@color/navy"
+                    android:text="@string/twenty" />
 
-    <RadioGroup
-        android:id="@+id/difficulty_radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+                <RadioButton
+                    android:id="@+id/num_25_rd_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="questionNumberSelection"
+                    android:textColor="@color/navy"
+                    android:text="@string/twenty_five" />
 
-        <RadioButton
-            android:id="@+id/easy_radio_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:onClick="difficultySelection"
-            android:textColor="@color/lime"
-            android:text="@string/easy" />
+                <RadioButton
+                    android:id="@+id/num_30_rd_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="questionNumberSelection"
+                    android:textColor="@color/navy"
+                    android:text="@string/thirty" />
 
-        <RadioButton
-            android:id="@+id/medium_radio_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="difficultySelection"
-            android:textColor="@color/lime"
-            android:text="@string/medium" />
+                <RadioButton
+                    android:id="@+id/num_40_rd_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="questionNumberSelection"
+                    android:textColor="@color/navy"
+                    android:text="@string/forty" />
 
-        <RadioButton
-            android:id="@+id/hard_radio_button"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:onClick="difficultySelection"
-            android:text="@string/hard"
-            android:textColor="@color/lime"/>
-    </RadioGroup>
+                <RadioButton
+                    android:id="@+id/num_50_rd_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="questionNumberSelection"
+                    android:textColor="@color/navy"
+                    android:text="@string/fifty" />
+            </RadioGroup>
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:text="@string/select_type"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/difficulty_radioGroup" />
-
-    <RadioGroup
-        android:id="@+id/qn_type_radioGroup"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
-
-        <RadioButton
-            android:id="@+id/choice_radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:checked="true"
-            android:onClick="typeSelection"
-            android:textColor="@color/deep_pink"
-            android:text="@string/multiple" />
-
-        <RadioButton
-            android:id="@+id/true_or_false_radio_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:onClick="typeSelection"
-            android:text="@string/true_or_false"
-            android:textColor="@color/deep_pink"/>
-    </RadioGroup>
-
-    <Button
-        android:id="@+id/start_quiz_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="155dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="155dp"
-        android:text="@string/start_quiz"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/qn_type_radioGroup" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/selet_diff"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/questionnums_radiogroup" />
 
 
+            <RadioGroup
+                android:id="@+id/difficulty_radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <RadioButton
+                    android:id="@+id/easy_radio_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="true"
+                    android:onClick="difficultySelection"
+                    android:textColor="@color/lime"
+                    android:text="@string/easy" />
+
+                <RadioButton
+                    android:id="@+id/medium_radio_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="difficultySelection"
+                    android:textColor="@color/lime"
+                    android:text="@string/medium" />
+
+                <RadioButton
+                    android:id="@+id/hard_radio_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="difficultySelection"
+                    android:text="@string/hard"
+                    android:textColor="@color/lime"/>
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="@string/select_type"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/difficulty_radioGroup" />
+
+            <RadioGroup
+                android:id="@+id/qn_type_radioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+                <RadioButton
+                    android:id="@+id/choice_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:onClick="typeSelection"
+                    android:textColor="@color/deep_pink"
+                    android:text="@string/multiple" />
+
+                <RadioButton
+                    android:id="@+id/true_or_false_radio_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="typeSelection"
+                    android:text="@string/true_or_false"
+                    android:textColor="@color/deep_pink"/>
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/start_quiz_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="155dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="155dp"
+                android:text="@string/start_quiz"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/qn_type_radioGroup" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </ScrollView>
+
+
+</LinearLayout>
