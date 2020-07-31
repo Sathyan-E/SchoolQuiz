@@ -160,7 +160,7 @@
                     android:layout_weight="1"
                     android:checked="true"
                     android:onClick="difficultySelection"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/dark_green"
                     android:text="@string/easy" />
 
                 <RadioButton
@@ -169,7 +169,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="difficultySelection"
-                    android:textColor="@color/lime"
+                    android:textColor="@color/dark_green"
                     android:text="@string/medium" />
 
                 <RadioButton
@@ -179,7 +179,7 @@
                     android:layout_weight="1"
                     android:onClick="difficultySelection"
                     android:text="@string/hard"
-                    android:textColor="@color/lime"/>
+                    android:textColor="@color/dark_green"/>
             </RadioGroup>
 
             <TextView

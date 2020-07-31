@@ -119,7 +119,7 @@ class QuizActivity : AppCompatActivity() {
             score++
             result_textview.text=displayRightAnswerMessage
             result_textview.visibility=VISIBLE
-            result_textview.setTextColor(resources.getColor(R.color.correctAnswer))
+            result_textview.setTextColor(resources.getColor(R.color.dark_green))
         }else{
             Toast.makeText(this, "Wrong Answer!$correctAnswer",Toast.LENGTH_SHORT).show()
             displayWrongAnswerMessage="Wrong Answer! The correct answer is $correctAnswer"
