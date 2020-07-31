@@ -1,8 +1,10 @@
 package com.example.schoolquiz.view
 
+import android.Manifest
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,6 +14,7 @@ import android.view.MenuItem
 import android.view.View
 import android.view.View.*
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.schoolquiz.R
@@ -38,7 +41,14 @@ class CategoryActivity : AppCompatActivity() {
         viewModel=ViewModelProvider(this).get(CategoryActivityViewModel::class.java)
 //        val
 
-        loadCategory()
+        if (checkPermission()){
+            loadCategory()
+        }
+        else{
+            requestPermission()
+        }
+
+       // loadCategory()
         viewModel.showProgress.observe(this, Observer {
             if (it){
                 category_progressbar.visibility=VISIBLE
@@ -131,5 +141,20 @@ class CategoryActivity : AppCompatActivity() {
             network_details.visibility= VISIBLE
         }
 
+    }
+    private fun checkPermission():Boolean{
+        if (
+            ActivityCompat.checkSelfPermission(this,android.Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED)
+        {
+            return true
+        }
+        return false
+    }
+    //requesting permission for location
+    private  fun requestPermission(){
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET),1
+        )
     }
 }

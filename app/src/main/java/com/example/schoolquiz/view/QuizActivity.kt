@@ -41,17 +41,11 @@ class QuizActivity : AppCompatActivity() {
 
         quizviewModel=ViewModelProvider(this).get(QuizActivityViewModel::class.java)
         //chronometer.format="H:MM:SS"
-
+        loadQuiz()
         quizviewModel.questionList.observe(this, Observer {
             progressbar_quiz.visibility= GONE
             next_button.visibility= VISIBLE
 
-            if (checkPermission()){
-                loadQuiz()
-            }
-            else{
-                requestPermission()
-            }
             if (it.size>0){
                 questionList.clear()
                 questionNumber=0
@@ -197,7 +191,7 @@ class QuizActivity : AppCompatActivity() {
         name_result.text=intent.getStringExtra("student_name")
         score_result.text=score.toString()
         time_taken.text=chronometer.text
-        if (score>=5){
+        if (score>=totalQuestions/2){
             final_result.text="PASS"
         }else{
             final_result.text="FAIL"
@@ -223,22 +217,8 @@ class QuizActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        loadQuiz()
+
     }
-    private fun checkPermission():Boolean{
-        if (
-            ActivityCompat.checkSelfPermission(this,android.Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED)
-        {
-            return true
-        }
-        return false
-    }
-    //requesting permission for location
-    private  fun requestPermission(){
-        ActivityCompat.requestPermissions(
-            this,
-            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET),1
-        )
-    }
+
 
 }
