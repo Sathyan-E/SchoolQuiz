@@ -1,6 +1,8 @@
 package com.example.schoolquiz.view
 
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager
 import android.net.ConnectivityManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,6 +13,7 @@ import android.view.View.*
 import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.schoolquiz.R
@@ -39,19 +42,22 @@ class QuizActivity : AppCompatActivity() {
         quizviewModel=ViewModelProvider(this).get(QuizActivityViewModel::class.java)
         //chronometer.format="H:MM:SS"
 
-        loadQuiz()
-
-
         quizviewModel.questionList.observe(this, Observer {
             progressbar_quiz.visibility= GONE
             next_button.visibility= VISIBLE
+
+            if (checkPermission()){
+                loadQuiz()
+            }
+            else{
+                requestPermission()
+            }
             if (it.size>0){
                 questionList.clear()
                 questionNumber=0
                 score=0
                 questionList.addAll(it)
                 totalQuestions=questionList.size
-                chronometer.start()
                 updateUi(questionNumber)
 
             }
@@ -87,6 +93,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
     fun updateUi(position:Int){
+        chronometer.start()
         val questionObject=questionList.get(position)
 
         question_textview.text =questionObject.question
@@ -216,6 +223,22 @@ class QuizActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        chronometer.start()
+        loadQuiz()
     }
+    private fun checkPermission():Boolean{
+        if (
+            ActivityCompat.checkSelfPermission(this,android.Manifest.permission.INTERNET)== PackageManager.PERMISSION_GRANTED)
+        {
+            return true
+        }
+        return false
+    }
+    //requesting permission for location
+    private  fun requestPermission(){
+        ActivityCompat.requestPermissions(
+            this,
+            arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET),1
+        )
+    }
+
 }
