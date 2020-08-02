@@ -52,7 +52,7 @@ class QuizActivity : AppCompatActivity() {
 
             }
             else{
-                Toast.makeText(this,"This Quiz is currently not Available",Toast.LENGTH_SHORT).show()
+               // Toast.makeText(this,"This Quiz is currently not Available",Toast.LENGTH_SHORT).show()
                 val notAvailable="This Quiz is currently not Available"
                 error_textview.text=notAvailable
                 error_textview.visibility= VISIBLE
@@ -129,13 +129,13 @@ class QuizActivity : AppCompatActivity() {
         studentAnswer=id.text.toString()
 
         if(studentAnswer==correctAnswer){
-            Toast.makeText(this, "Correct Answer!",Toast.LENGTH_SHORT).show()
+           // Toast.makeText(this, "Correct Answer!",Toast.LENGTH_SHORT).show()
             score++
             result_textview.text=displayRightAnswerMessage
             result_textview.visibility=VISIBLE
             result_textview.setTextColor(resources.getColor(R.color.dark_green))
         }else{
-            Toast.makeText(this, "Wrong Answer!$correctAnswer",Toast.LENGTH_SHORT).show()
+           // Toast.makeText(this, "Wrong Answer!$correctAnswer",Toast.LENGTH_SHORT).show()
             displayWrongAnswerMessage="Wrong Answer! The correct answer is $correctAnswer"
             result_textview.text=displayWrongAnswerMessage
             result_textview.visibility=VISIBLE
