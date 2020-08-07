@@ -39,8 +39,8 @@ class QuizActivity : AppCompatActivity() {
         //chronometer.format="H:MM:SS"
         loadQuiz()
         quizviewModel.questionList.observe(this, Observer {
-            progressbar_quiz.visibility= GONE
-            next_button.visibility= VISIBLE
+            hideProgressbar()
+            showNextButton()
 
             if (it.isNotEmpty()){
                 questionList.clear()
@@ -55,7 +55,9 @@ class QuizActivity : AppCompatActivity() {
                // Toast.makeText(this,"This Quiz is currently not Available",Toast.LENGTH_SHORT).show()
                 val notAvailable="This Quiz is currently not Available"
                 error_textview.text=notAvailable
-                error_textview.visibility= VISIBLE
+                hideNextButton()
+                showErrorText()
+
             }
 
         })
@@ -65,20 +67,16 @@ class QuizActivity : AppCompatActivity() {
         val amount=intent.getStringExtra("amount")
         val type= intent.getStringExtra("type")
         val difficulty=intent.getStringExtra("difficulty")
-        progressbar_quiz.visibility= VISIBLE
+        showProgressbar()
 
         if (checkInternet()){
             quizviewModel.getQuiz(categoryId!!,amount!!,difficulty!!,type!!)
-            error_textview.visibility= INVISIBLE
-            refresh_button.visibility= INVISIBLE
-            progressbar_quiz.visibility= INVISIBLE
+            perfectInternetConnection()
         }
         else{
             val internetRequired="This app requires Internet connection!"
             error_textview.text=internetRequired
-            error_textview.visibility= VISIBLE
-            refresh_button.visibility= VISIBLE
-            progressbar_quiz.visibility= INVISIBLE
+           noInternetConnection()
         }
 
 
@@ -160,6 +158,7 @@ class QuizActivity : AppCompatActivity() {
             chronometer.stop()
             //Toast.makeText(this,"Quiz Ended.Your  score is $score",Toast.LENGTH_SHORT).show()
             publishResult()
+            view.isEnabled=false
         }
 
     }
@@ -217,6 +216,31 @@ class QuizActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
+    }
+    private fun showProgressbar(){
+        progressbar_quiz.visibility= VISIBLE
+    }
+    private fun hideProgressbar(){
+        progressbar_quiz.visibility= GONE
+    }
+    private fun showNextButton(){
+        next_button.visibility= VISIBLE
+    }
+    private fun hideNextButton(){
+        next_button.visibility= INVISIBLE
+    }
+    private  fun showErrorText(){
+        error_textview.visibility= VISIBLE
+    }
+    private fun perfectInternetConnection(){
+        error_textview.visibility= INVISIBLE
+        refresh_button.visibility= INVISIBLE
+        progressbar_quiz.visibility= INVISIBLE
+    }
+    private fun noInternetConnection(){
+        error_textview.visibility= VISIBLE
+        refresh_button.visibility= VISIBLE
+        progressbar_quiz.visibility= INVISIBLE
     }
 
 

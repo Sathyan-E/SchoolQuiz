@@ -1,6 +1,11 @@
 package com.example.schoolquiz.view
 
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -8,6 +13,9 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
+import androidx.core.content.ContextCompat
 import com.example.schoolquiz.R
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.layout_parameter_activity.*
@@ -25,11 +33,13 @@ class QuizParametersActivity : AppCompatActivity() {
         categoryId=intent.getStringExtra("category_id").toString()
         categoryName=intent.getStringExtra("category_name").toString()
 
+
         selected_category.text=categoryName
 
         start_quiz_button.setOnClickListener{
             if (student_name.text.toString() == ""){
                 student_name.error="Enter your name"
+
             }
             else{
                 val intent=Intent(this,QuizActivity::class.java)
@@ -128,9 +138,12 @@ class QuizParametersActivity : AppCompatActivity() {
         if (item.itemId==R.id.sign_out){
 
             AuthUI.getInstance().signOut(this)
-            Toast.makeText(this,"Sign out button clciked", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Signing out", Toast.LENGTH_SHORT).show()
         }
 
         return true
     }
+
+
+
 }

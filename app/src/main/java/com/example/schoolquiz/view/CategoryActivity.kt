@@ -51,9 +51,11 @@ class CategoryActivity : AppCompatActivity() {
        // loadCategory()
         viewModel.showProgress.observe(this, Observer {
             if (it){
-                category_progressbar.visibility=VISIBLE
+                showProgressbar()
+
             }else{
-                category_progressbar.visibility=GONE
+                hideProgressbar()
+
             }
         })
         viewModel.categoryList.observe(this, Observer {
@@ -114,7 +116,7 @@ class CategoryActivity : AppCompatActivity() {
         if (item.itemId==R.id.sign_out){
 
             AuthUI.getInstance().signOut(this)
-            Toast.makeText(this,"Sign out button clciked",Toast.LENGTH_SHORT).show()
+            Toast.makeText(this,"Signing out",Toast.LENGTH_SHORT).show()
         }
 
         return true
@@ -131,14 +133,15 @@ class CategoryActivity : AppCompatActivity() {
     }
     fun loadCategory(){
         if (checkInternet()){
-            network_details.visibility= GONE
+            hideNetworkIssueView()
             viewModel.changeProgressState()
             viewModel.getCategoryList()
         }
         else{
             category_progressbar.visibility= INVISIBLE
             Toast.makeText(this,"This app requires internet connnection!",Toast.LENGTH_SHORT).show()
-            network_details.visibility= VISIBLE
+            showNetworkIssueView()
+
         }
 
     }
@@ -156,5 +159,18 @@ class CategoryActivity : AppCompatActivity() {
             this,
             arrayOf(Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.INTERNET),1
         )
+    }
+
+    private fun showProgressbar(){
+        category_progressbar.visibility=VISIBLE
+    }
+    private fun hideProgressbar(){
+        category_progressbar.visibility=GONE
+    }
+    private  fun showNetworkIssueView(){
+        network_details.visibility= VISIBLE
+    }
+    private fun hideNetworkIssueView(){
+        network_details.visibility= GONE
     }
 }
