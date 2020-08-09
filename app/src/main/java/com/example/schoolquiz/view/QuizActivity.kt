@@ -1,6 +1,7 @@
 package com.example.schoolquiz.view
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.view.Menu
@@ -178,6 +179,10 @@ class QuizActivity : AppCompatActivity() {
 
             AuthUI.getInstance().signOut(this)
             Toast.makeText(this,"Sign out button clciked",Toast.LENGTH_SHORT).show()
+        }
+        else if(item.itemId==R.id.history){
+            val intent=Intent(this,HistoryActivity::class.java)
+            startActivity(intent)
         }
 
         return true
