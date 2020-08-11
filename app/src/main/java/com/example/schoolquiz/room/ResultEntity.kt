@@ -5,16 +5,21 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "history_results")
-data class Result(
-    @PrimaryKey(autoGenerate = true)
-    val uid:Int,
+data class ResultEntity(
 
     @ColumnInfo(name="student_name")
-    val studentName:String?,
+    var studentName:String?,
+    @ColumnInfo(name = "category")
+    var categoryName:String?,
     @ColumnInfo(name = "duration")
-    val timeTaken:String?,
+    var timeTaken:String?,
     @ColumnInfo(name = "quiz_result")
-    val result:String?,
+    var result:String?,
     @ColumnInfo(name = "quiz_score")
-    val score:String?
-)
+    var score:String?
+
+){
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "ID")
+    var id:Int?=null
+}

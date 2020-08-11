@@ -7,7 +7,7 @@ import androidx.room.Query
 @Dao
 interface ResultDao {
     @Query("SELECT * FROM  history_results")
-    fun getAll():List<Result>
+    fun getAll():List<ResultEntity>
     @Insert
-    fun insertResult(vararg result: Result)
+    fun insertResult(vararg result: ResultEntity)
 }

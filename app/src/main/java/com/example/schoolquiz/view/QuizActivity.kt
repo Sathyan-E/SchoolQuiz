@@ -13,8 +13,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.room.Room
 import com.example.schoolquiz.R
 import com.example.schoolquiz.network.model.QuestionDetail
+import com.example.schoolquiz.room.AppDatabase
+import com.example.schoolquiz.room.ResultEntity
 import com.example.schoolquiz.viewModel.QuizActivityViewModel
 import com.firebase.ui.auth.AuthUI
 import kotlinx.android.synthetic.main.activity_quiz.*
@@ -29,6 +32,7 @@ class QuizActivity : AppCompatActivity() {
     private lateinit var studentAnswer:String
     private var displayRightAnswerMessage="Congratulations!! Perfect Answer"
     private lateinit var displayWrongAnswerMessage:String
+   private lateinit var db:AppDatabase
     //private var startTime:Long=0L
 
 
@@ -62,6 +66,8 @@ class QuizActivity : AppCompatActivity() {
             }
 
         })
+        db=Room.databaseBuilder(applicationContext,AppDatabase::class.java,"history.db").build()
+
     }
     private fun loadQuiz(){
         val categoryId=intent.getStringExtra("category_id")
@@ -159,6 +165,7 @@ class QuizActivity : AppCompatActivity() {
             chronometer.stop()
             //Toast.makeText(this,"Quiz Ended.Your  score is $score",Toast.LENGTH_SHORT).show()
             publishResult()
+            //saveScore()
             view.isEnabled=false
         }
 
@@ -188,18 +195,25 @@ class QuizActivity : AppCompatActivity() {
         return true
     }
     private fun publishResult(){
-        category_result.text=intent.getStringExtra("category_name")
-        name_result.text=intent.getStringExtra("student_name")
+        val name=intent.getStringExtra("student_name")
+        val category=intent.getStringExtra("category_name")
+        val time=chronometer.text
+        category_result.text=category
+        name_result.text=name
         score_result.text=score.toString()
-        time_taken.text=chronometer.text
+        time_taken.text=time
+        var result=""
         if (score>=totalQuestions/2){
-            val pass="PASS"
-            final_result.text=pass
+             result="PASS"
+
         }else{
-            val fail="FAIL"
-            final_result.text=fail
+            result="FAIL"
+          //  final_result.text=fail
         }
+        final_result.text=result
         result_cardview.visibility= VISIBLE
+        db.resultDao().insertResult(ResultEntity(name,category,time.toString(),score.toString(),result))
+
     }
 
     private fun checkInternet():Boolean{
