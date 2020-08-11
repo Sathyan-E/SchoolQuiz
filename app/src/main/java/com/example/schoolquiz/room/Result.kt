@@ -4,10 +4,11 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(tableName = "history_results")
 data class Result(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val uid:Int,
+
     @ColumnInfo(name="student_name")
     val studentName:String?,
     @ColumnInfo(name = "duration")
